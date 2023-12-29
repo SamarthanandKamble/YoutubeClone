@@ -1,12 +1,12 @@
 import "./App.css";
 import Body from "./components/Body";
-import Navbar from "./components/Navbar";
-
+import { Provider } from "react-redux";
+import { store } from "./Redux/appStore";
 function App() {
   return (
-    <div>
+    <Provider store={store}>
       <Body />
-    </div>
+    </Provider>
   );
 }
 

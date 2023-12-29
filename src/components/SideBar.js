@@ -1,8 +1,9 @@
 import React from "react";
 import { Home } from "react-feather";
+import { useSelector } from "react-redux";
 const SideBar = () => {
   return (
-    <div className="w-52 border border-gray-950 p-1 h-screen">
+    <div className="w-52 border bg-black p-1 h-screen z-40">
       <ul>
         <li>
           <div className="flex justify-between">

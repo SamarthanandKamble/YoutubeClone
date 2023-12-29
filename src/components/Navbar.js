@@ -1,12 +1,19 @@
 import React, { useState } from "react";
 import { Menu, Youtube, Search, Mic, Video, Bell, User } from "react-feather";
+import { useDispatch } from "react-redux";
+import { menuToggler } from "../Redux/menuSlice";
+
 const Navbar = () => {
+  const dispatch = useDispatch();
   const [searchText, setSearchText] = useState("");
 
   return (
     <div>
       <ul className="flex flex-wrap justify-between p-2 items-center bg-gray-950 text-white">
-        <li className="p-1 border w-25 cursor-pointer">
+        <li
+          className="p-1 border w-25 cursor-pointer"
+          onClick={(e) => dispatch(menuToggler())}
+        >
           <Menu />
         </li>
         <li className="p-1 border w-40">
