@@ -6,8 +6,8 @@ export const watchVideoSlice = createSlice({
     watchVideo: null,
   },
   reducers: {
-    addWatchVideo: (state, payload) => {
-      state.watchVideo = payload.id;
+    addWatchVideo: (state, action) => {
+      state.watchVideo = action.payload;
     },
   },
 });

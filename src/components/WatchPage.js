@@ -10,7 +10,7 @@ const WatchPage = () => {
     dispatch(closeSidebar());
   }, []);
   return (
-    <div className="absolute px-2 w-full flex border">
+    <div className="bg-gray-950 absolute px-2 w-full flex border">
       <WatchVideo />
       <SuggestionVideos />
     </div>

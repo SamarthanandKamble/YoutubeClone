@@ -1,13 +1,20 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { ThumbsUp, ThumbsDown, Send, Maximize } from "react-feather";
 import { useSearchParams } from "react-router-dom";
 import { WATCH_VIDEO_ID_URL } from "../constants";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addWatchVideo } from "../Redux/watchVideoSlice";
 const WatchVideo = () => {
   const [searchParam] = useSearchParams();
   const videoId = searchParam.get("v");
   const dispatch = useDispatch();
+  const result = useSelector((state) => state.watchVideo?.watchVideo);
+
+  const [expanded, setExpanded] = useState(false);
+
+  const descriptionToggle = () => {
+    setExpanded(!expanded);
+  };
   useEffect(() => {
     getVideoById();
   }, []);
@@ -24,46 +31,91 @@ const WatchVideo = () => {
     }
   };
 
+  if (!result) {
+    return;
+  }
+
+  const { snippet, statistics } = result;
+  console.log("snippet", snippet, "statistics", statistics);
   return (
-    <div className="w-8/12 border">
-      <div className="flex flex-col items-center w-3/4 justify-between mx-auto">
+    <div className="w-8/12 border min-h-screen ">
+      <section className="flex flex-col w-3/4 mx-auto">
         <iframe
           width="640"
           height="360"
           src={"https://www.youtube.com/embed/" + videoId}
           title="YouTube video player"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          className="rounded-lg text-center"
+          className="rounded-xl text-center"
         />
-        <span>snippet.title</span>
-        <div className="flex flex-row justify-between border py-2 w-full">
-          <div className="flex items-center p-1 border">
-            <img alt="logo" className=" rounded-full" />
-            <span>snippet.channelTitle</span>
-            <button className="px-2 py-1 border rounded-lg">Join</button>
-            <button className="px-2 py-1 border rounded-lg">Subscribe</button>
+        <span className="font-bold my-2">{snippet.title}</span>
+        <div className="flex flex-row justify-between py-2 w-full">
+          <div className="flex items-center">
+            <img
+              src={snippet.thumbnails.default.url}
+              alt="logo"
+              className=" rounded-full h-10 w-10 mr-1"
+            />
+            <span className="text-left text-sm">{snippet.channelTitle}</span>
+            <button className="px-2 py-1 mx-1 border border-gray-850 rounded-lg">
+              Join
+            </button>
+            <button className="px-2 py-1 rounded-lg bg-gray-800 mx-1">
+              Subscribe
+            </button>
           </div>
           <div className="flex items-center content-center">
-            <div className="flex items-center content-center">
-              <span>
+            <div className="flex items-center content-center mx-2 px-2 py-1 rounded-lg bg-gray-800">
+              <span className="mx-1 cursor-pointer">
                 <ThumbsUp />
               </span>
-              <span>statistics.likeCount</span>
-              <span>
+              <span className="px-1">
+                {statistics.likeCount > 1000
+                  ? (statistics.likeCount / 1000).toFixed(1) + "k"
+                  : statistics.likeCount}
+              </span>
+              <span className="mx-1 font-thin text-lg">|</span>
+              <span className="mx-1 cursor-pointer">
                 <ThumbsDown />
               </span>
             </div>
-            <div className="flex">
-              <span>
+            <div className="flex mx-2 px-2 py-1 rounded-lg bg-gray-800 cursor-pointer">
+              <span className="mx-2 ">
                 <Send />
               </span>
-              <span>
-                <Maximize />
-              </span>
+              <span className="mr-2">Share</span>
             </div>
+            <span>
+              <Maximize />
+            </span>
           </div>
         </div>
-      </div>
+      </section>
+
+      <section
+        className={`w-3/4 mx-auto bg-gray-800 rounded-lg p-2 my-2 h-28 relative overflow-${
+          expanded ? "visible h-auto" : "hidden"
+        }`}
+      >
+        <div>
+          <span className="mr-2">
+            {statistics.viewCount > 1000
+              ? (statistics.viewCount / 1000).toFixed(1) + "k "
+              : statistics.viewCount}
+            views
+          </span>
+          <span className="mx-1">Premiered on</span>
+          <span className="mx-1">
+            {new Date(snippet.publishedAt).toLocaleString("en-US")}
+          </span>
+        </div>
+        <span>{snippet?.localized?.description}</span>
+        <span
+          className="text-blue-500 cursor-pointer absolute bottom-0 right-2  bg-gradient-to-r from-gray-800 p-1"
+          onClick={descriptionToggle}
+        >
+          {expanded ? "Show less" : "...more"}
+        </span>
+      </section>
     </div>
   );
 };

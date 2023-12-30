@@ -8,10 +8,10 @@ import ButtonContainer from "./components/ButtonContainer";
 
 function App() {
   return (
-    <>
+    <div className="bg-gray-950">
       <Navbar />
       <RouterProvider router={router}></RouterProvider>
-    </>
+    </div>
   );
 }
 

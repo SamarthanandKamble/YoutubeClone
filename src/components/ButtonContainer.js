@@ -1,7 +1,7 @@
 import React from "react";
 
 const ButtonContainer = () => {
-  return <div>ButtonContainer</div>;
+  return <div className="bg-gray-950">ButtonContainer</div>;
 };
 
 export default ButtonContainer;
