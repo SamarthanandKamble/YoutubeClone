@@ -3,9 +3,9 @@ import React from "react";
 const VideoCard = ({ videos }) => {
   const { snippet, statistics } = videos;
   const { thumbnails } = snippet;
-  console.log("videos", videos);
+  // console.log("videos", videos);
   return (
-    <div className="flex flex-wrap flex-col w-96 border">
+    <div className="flex flex-wrap justify-evenly flex-col w-96 border ">
       <img
         src={thumbnails?.maxres?.url || thumbnails?.standard?.url}
         alt="snippet.thumbnails.maxres"

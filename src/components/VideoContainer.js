@@ -1,16 +1,24 @@
-import React from "react";
-import usePopularVideos from "../Hooks/usePopularVideos";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import VideoCard from "./VideoCard";
+import { Link } from "react-router-dom";
+import {} from "react-redux";
+import { openSidebar } from "../Redux/sideBarIconSlice";
+
 const VideoContainer = () => {
+  const dispatch = useDispatch();
   const popularVideos = useSelector((state) => state.popularVideos?.videos);
 
+  useEffect(() => {
+    dispatch(openSidebar());
+  }, []);
+
   return (
-    <div className="flex flex-wrap bg-gray-950 absolute left-20 px-2">
+    <div className="flex flex-wrap bg-gray-950 absolute left-20 top-11 px-2">
       {popularVideos.map((videos) => (
-        <div  key={videos.id}>
+        <Link to={"/watch?v=" + videos.id} key={videos.id}>
           <VideoCard videos={videos} />
-        </div>
+        </Link>
       ))}
     </div>
   );
