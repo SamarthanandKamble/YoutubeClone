@@ -36,16 +36,15 @@ const WatchVideo = () => {
   }
 
   const { snippet, statistics } = result;
-  console.log("snippet", snippet, "statistics", statistics);
   return (
     <div className="w-8/12 border min-h-screen ">
-      <section className="flex flex-col w-3/4 mx-auto">
+      <section className="flex flex-col w-3/4 mx-auto aspect-video">
         <iframe
           width="640"
           height="360"
           src={"https://www.youtube.com/embed/" + videoId}
           title="YouTube video player"
-          className="rounded-xl text-center"
+          className="rounded-xl text-center aspect-video"
         />
         <span className="font-bold my-2">{snippet.title}</span>
         <div className="flex flex-row justify-between py-2 w-full">
