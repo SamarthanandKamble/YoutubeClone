@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import ButtonContainer from "./ButtonContainer";
 import { Circle } from "react-feather";
+import { Link } from "react-router-dom";
 const SuggestionVideos = () => {
   const truncateString = (str) => {
     let words = str.split(" ");
@@ -13,7 +14,7 @@ const SuggestionVideos = () => {
   };
 
   const calculatePublishTime = (dateStr) => {
-    console.log("date:", dateStr);
+    // console.log("date:", dateStr);
     let currentDate = new Date();
     let pastDate = new Date(dateStr);
     let timeDifference = currentDate - pastDate;
@@ -38,48 +39,53 @@ const SuggestionVideos = () => {
   };
 
   const videos = useSelector((state) => state.popularVideos?.videos);
-  console.log("videos", videos);
+  // console.log("videos", videos);
   return (
     <div className="w-4/12 ">
       <div>
-        <ButtonContainer />
+        <ButtonContainer length={5} />
       </div>
 
       {videos.map((video) => (
         <div
           key={video.id}
-          className="flex  flex-wrap content-around items-center"
+          className="flex flex-wrap content-around items-center border m-1"
         >
-          <div className="w-44 h-24 my-2">
-            <img
-              alt="video-thumbnail"
-              src={
-                video?.snippet?.thumbnails?.maxres?.url ||
-                video?.snippet?.thumbnails?.high?.url
-              }
-              className="aspect-video  rounded-xl w-full h-full"
-            />
+          <div className="w-44 h-24 my-2 mx-1">
+            <Link to={"/watch?v=" + video.id}>
+              <img
+                alt="video-thumbnail"
+                src={
+                  video?.snippet?.thumbnails?.maxres?.url ||
+                  video?.snippet?.thumbnails?.high?.url
+                }
+                className="aspect-video  rounded-xl w-full h-full"
+              />
+            </Link>
           </div>
           <div className=" w-52 h-24 ml-1 flex flex-col">
-            <section className="text-sm font-semibold">
-              {truncateString(video?.snippet?.title)}
-            </section>
-            <section className="text-xs text-gray-200 mt-1 mb-1 font-semibold">
-              {video.snippet.channelTitle}
-            </section>
-            <section className="text-xs  flex flex-wrap items-center  content-center mt-1">
-              <span className="mr-2">
-                {video?.statistics?.viewCount > 1000
-                  ? (video?.statistics?.viewCount / 1000).toFixed(1) + "k views"
-                  : video?.statistics?.viewCount + " views"}
-              </span>
-              <span className="bg-gray-300  border-gray-800 rounded-full mr-2">
-                <Circle size={6} color="" />
-              </span>
-              <span className="text-xs">
-                {calculatePublishTime(video?.snippet?.publishedAt)}
-              </span>
-            </section>
+            <Link to={"/watch?v=" + video.id}>
+              <section className="text-sm font-semibold">
+                {truncateString(video?.snippet?.title)}
+              </section>
+              <section className="text-xs text-gray-200 mt-1 mb-1 font-semibold">
+                {video.snippet.channelTitle}
+              </section>
+              <section className="text-xs  flex flex-wrap items-center  content-center mt-1">
+                <span className="mr-2">
+                  {video?.statistics?.viewCount > 1000
+                    ? (video?.statistics?.viewCount / 1000).toFixed(1) +
+                      "k views"
+                    : video?.statistics?.viewCount + " views"}
+                </span>
+                <span className="bg-gray-300  border-gray-800 rounded-full mr-2">
+                  <Circle size={6} color="" />
+                </span>
+                <span className="text-xs">
+                  {calculatePublishTime(video?.snippet?.publishedAt)}
+                </span>
+              </section>
+            </Link>
           </div>
         </div>
       ))}

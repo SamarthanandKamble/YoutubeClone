@@ -17,7 +17,7 @@ const WatchVideo = () => {
   };
   useEffect(() => {
     getVideoById();
-  }, []);
+  }, [videoId]);
 
   const getVideoById = async () => {
     try {
@@ -91,8 +91,8 @@ const WatchVideo = () => {
       </section>
 
       <section
-        className={`w-3/4 mx-auto bg-gray-800 rounded-lg p-2 my-2 h-28 relative overflow-${
-          expanded ? "visible h-auto" : "hidden"
+        className={`w-3/4 mx-auto flex flex-wrap bg-gray-800 rounded-lg p-2 my-2 h-28 relative overflow-${
+          expanded ? "visible h-auto w-3/4" : "hidden"
         }`}
       >
         <div>
@@ -107,7 +107,7 @@ const WatchVideo = () => {
             {new Date(snippet.publishedAt).toLocaleString("en-US")}
           </span>
         </div>
-        <span>{snippet?.localized?.description}</span>
+        <span className="min-w-full">{snippet?.localized?.description}</span>
         <span
           className="text-blue-500 cursor-pointer absolute bottom-0 right-2  bg-gradient-to-r from-gray-800 p-1"
           onClick={descriptionToggle}
