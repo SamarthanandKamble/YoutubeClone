@@ -5,13 +5,13 @@ const VideoCard = ({ videos }) => {
   const { thumbnails } = snippet;
   // console.log("videos", videos);
   return (
-    <div className="flex flex-wrap justify-evenly flex-col w-96 border ">
+    <div className="flex flex-wrap flex-col w-full border m-1">
       <img
         src={thumbnails?.maxres?.url || thumbnails?.standard?.url}
         alt="snippet.thumbnails.maxres"
-        className="h-52 w-96 p-2 rounded-lg"
+        className="h-48 w-80 p-2 rounded-lg"
       />
-      <div className="flex w-96">
+      <div className="flex w-96 border">
         <img alt="" className="h-9 w-20 rounded-full" />
         <div className="flex flex-col border ">
           <span>{snippet.title}</span>

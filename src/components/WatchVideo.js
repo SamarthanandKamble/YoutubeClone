@@ -5,12 +5,11 @@ import { WATCH_VIDEO_ID_URL } from "../constants";
 import { useDispatch, useSelector } from "react-redux";
 import { addWatchVideo } from "../Redux/watchVideoSlice";
 const WatchVideo = () => {
-  const [searchParam] = useSearchParams();
-  const videoId = searchParam.get("v");
   const dispatch = useDispatch();
   const result = useSelector((state) => state.watchVideo?.watchVideo);
-
   const [expanded, setExpanded] = useState(false);
+  const [searchParam] = useSearchParams();
+  const videoId = searchParam.get("v");
 
   const descriptionToggle = () => {
     setExpanded(!expanded);

@@ -14,7 +14,7 @@ const ButtonContainer = ({ length }) => {
   return (
     <div
       className={`bg-gray-950 mt-2 mb-3 pl-2 ${
-        param[0].size ? "relative" : "absolute left-20 border"
+        param[0].size ? "relative" : "absolute left-24 border"
       }`}
     >
       <ul className="flex w-full">
