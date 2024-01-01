@@ -7,8 +7,8 @@ const SideBarIcons = () => {
   );
   return (
     shouldOpenSideBarIcons && (
-      <div className="w-24 bg-gray-950 text-white mt-2 min-h-full">
-        <ul className="border p-1 items-center content-center">
+      <div className="w-24 bg-gray-950 text-white mt-2 min-h-full fixed left-0">
+        <ul className="p-1 items-center content-center">
           <li>
             <div className="flex flex-col flex-wrap items-center mb-6">
               <span className="">

@@ -14,7 +14,7 @@ const ButtonContainer = ({ length }) => {
   return (
     <div
       className={`bg-gray-950 mt-2 mb-3 pl-2 ${
-        param[0].size ? "relative" : "absolute left-24 border"
+        param[0].size ? "sticky top-0" : "fixed top-8 left-24 z-40 p-1 border w-full"
       }`}
     >
       <ul className="flex w-full">

@@ -8,22 +8,22 @@ const Navbar = () => {
   const [searchText, setSearchText] = useState("");
 
   return (
-    <div>
+    <div className="sticky top-0 z-40">
       <ul className="grid grid-cols-12 gap-1 bg-gray-950 text-white">
         <li
-          className="p-1 border flex items-center justify-center cursor-pointer col-span-1"
+          className="p-1 flex items-center justify-center cursor-pointer col-span-1"
           onClick={(e) => dispatch(menuToggler())}
         >
           <Menu color="gray" />
         </li>
-        <li className="p-1 border col-span-2">
+        <li className="p-1  col-span-2">
           <div className="flex items-center relative">
             <Youtube size={30} color="red" />
             <span className="font-bold mx-1">Premium</span>
             <span className="absolute text-xs top-0 left-24">IN</span>
           </div>
         </li>
-        <li className="p-1 border col-span-6">
+        <li className="p-1  col-span-6">
           <div className="flex w-full items-center ">
             <input
               type="text"
@@ -41,13 +41,13 @@ const Navbar = () => {
           </div>
         </li>
 
-        <li className="p-1 flex items-center justify-end border w-25 col-span-1">
+        <li className="p-1 flex items-center justify-end w-25 col-span-1">
           <Video size={20} />
         </li>
-        <li className="p-1 flex items-center justify-center border w-25 col-span-1">
+        <li className="p-1 flex items-center justify-center w-25 col-span-1">
           <Bell size={20} />
         </li>
-        <li className="p-1 flex items-center border w-25 col-span-1">
+        <li className="p-1 flex items-center w-25 col-span-1">
           <User size={20} />
         </li>
       </ul>

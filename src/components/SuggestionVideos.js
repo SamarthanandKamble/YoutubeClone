@@ -14,7 +14,7 @@ const SuggestionVideos = () => {
   };
 
   const calculatePublishTime = (dateStr) => {
-    // console.log("date:", dateStr);
+   
     let currentDate = new Date();
     let pastDate = new Date(dateStr);
     let timeDifference = currentDate - pastDate;
