@@ -36,7 +36,7 @@ const WatchVideo = () => {
 
   const { snippet, statistics } = result;
   return (
-    <div className="w-8/12 border min-h-screen ">
+    <div className="w-8/12 border min-h-screen mt-16">
       <section className="flex flex-col w-3/4 mx-auto aspect-video">
         <iframe
           width="640"

@@ -8,27 +8,27 @@ const Navbar = () => {
   const [searchText, setSearchText] = useState("");
 
   return (
-    <div className="sticky top-0 z-40">
-      <ul className="grid grid-cols-12 gap-1 bg-gray-950 text-white">
+    <div className="fixed top-0 z-40 w-full border">
+      <ul className="grid grid-cols-12 gap-1 bg-gray-950 text-white w-full py-2">
         <li
           className="p-1 flex items-center justify-center cursor-pointer col-span-1"
           onClick={(e) => dispatch(menuToggler())}
         >
           <Menu color="gray" />
         </li>
-        <li className="p-1  col-span-2">
+        <li className="p-1 col-span-2">
           <div className="flex items-center relative">
             <Youtube size={30} color="red" />
             <span className="font-bold mx-1">Premium</span>
-            <span className="absolute text-xs top-0 left-24">IN</span>
+            <span className="absolute text-xs top-0 left-24 text-gray-400">IN</span>
           </div>
         </li>
-        <li className="p-1  col-span-6">
+        <li className="p-1 col-span-6">
           <div className="flex w-full items-center ">
             <input
               type="text"
               placeholder="Search"
-              className="px-3 py-1 w-full text-white border border-gray-700  rounded-l-full bg-gray-950 focus:outline-none "
+              className="px-5 py-1 w-full text-white border border-gray-700  rounded-l-full bg-gray-950 focus:outline-none "
               value={searchText}
               onChange={(e) => setSearchText(e.target.value)}
             />

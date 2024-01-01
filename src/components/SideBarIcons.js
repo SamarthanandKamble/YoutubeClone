@@ -7,12 +7,12 @@ const SideBarIcons = () => {
   );
   return (
     shouldOpenSideBarIcons && (
-      <div className="w-24 bg-gray-950 text-white mt-2 min-h-full fixed left-0">
+      <div className="w-24 bg-gray-950 text-white mt-2 min-h-full fixed left-0 top-12">
         <ul className="p-1 items-center content-center">
           <li>
             <div className="flex flex-col flex-wrap items-center mb-6">
               <span className="">
-                <Home color="gray" />
+                <Home color="gray" size={24} />
               </span>
               <span className="text-xs">Home</span>
             </div>
@@ -20,7 +20,7 @@ const SideBarIcons = () => {
           <li>
             <div className="flex flex-col flex-wrap items-center mb-6">
               <span className="">
-                <Film color="gray" />
+                <Film color="gray" size={24} />
               </span>
               <span className="text-xs">Shorts</span>
             </div>
@@ -28,7 +28,7 @@ const SideBarIcons = () => {
           <li>
             <div className="flex flex-col flex-wrap items-center mb-6">
               <span className="items-center">
-                <Users color="gray" />
+                <Users color="gray" size={24} />
               </span>
               <span className="text-xs text-center">Subscriptions</span>
             </div>
@@ -36,7 +36,7 @@ const SideBarIcons = () => {
           <li>
             <div className="flex flex-col flex-wrap items-center mb-6 w-full">
               <span>
-                <PlayCircle color="gray" />
+                <PlayCircle color="gray" size={24} />
               </span>
               <span className="text-xs text-center">Youtube Music</span>
             </div>
@@ -44,7 +44,7 @@ const SideBarIcons = () => {
           <li>
             <div className="flex flex-col flex-wrap items-center mb-6">
               <span>
-                <Save color="gray" />
+                <Save color="gray" size={24} />
               </span>
               <span className="text-xs">You</span>
             </div>
@@ -52,7 +52,7 @@ const SideBarIcons = () => {
           <li>
             <div className="flex flex-col flex-wrap items-center mb-6">
               <span>
-                <Download color="gray" />
+                <Download color="gray" size={24} />
               </span>
               <span className="text-xs">Download</span>
             </div>
