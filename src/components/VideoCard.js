@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const VideoCard = ({ videos }) => {
   const { snippet, statistics } = videos;
   const { thumbnails } = snippet;
-  console.log("videos", videos);
+  // console.log("videos", videos);
   const truncateString = (str) => {
     let words = str.split(" ");
     if (words.length < 10) {

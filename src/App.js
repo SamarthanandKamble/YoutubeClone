@@ -5,11 +5,13 @@ import Navbar from "./components/Navbar";
 import VideoContainer from "./components/VideoContainer";
 import WatchPage from "./components/WatchPage";
 import ButtonContainer from "./components/ButtonContainer";
+import SearchSuggestions from "./components/SearchSuggestions";
 
 function App() {
   return (
     <div className="bg-gray-950">
       <Navbar />
+      <SearchSuggestions />
       <RouterProvider router={router}></RouterProvider>
     </div>
   );

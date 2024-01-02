@@ -16,3 +16,6 @@ export const BUTTON_CONTAINER_LIST = [
   { selected: false, value: "Watched" },
   { selected: false, value: "New to you" },
 ];
+
+export const YOUTUBE_SEARCH_SUGGESTIONS_URL =
+  "http://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=";
