@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Home, Film, Users, PlayCircle, Download, Save } from "react-feather";
+import { Link } from "react-router-dom";
 const SideBarIcons = () => {
   const shouldOpenSideBarIcons = useSelector(
     (state) => state.sideBarIcon?.isSideBarIconOpen
@@ -9,14 +10,16 @@ const SideBarIcons = () => {
     shouldOpenSideBarIcons && (
       <div className="w-24 bg-gray-950 text-white mt-2 min-h-full fixed left-0 top-12">
         <ul className="p-1 items-center content-center">
-          <li>
-            <div className="flex flex-col flex-wrap items-center mb-6">
-              <span className="">
-                <Home color="gray" size={24} />
-              </span>
-              <span className="text-xs">Home</span>
-            </div>
-          </li>
+          <Link to={"/"}>
+            <li>
+              <div className="flex flex-col flex-wrap items-center mb-6">
+                <span className="">
+                  <Home color="gray" size={24} />
+                </span>
+                <span className="text-xs">Home</span>
+              </div>
+            </li>
+          </Link>
           <li>
             <div className="flex flex-col flex-wrap items-center mb-6">
               <span className="">

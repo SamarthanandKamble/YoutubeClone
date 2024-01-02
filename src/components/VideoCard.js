@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 const VideoCard = ({ videos }) => {
   const { snippet, statistics } = videos;
   const { thumbnails } = snippet;
@@ -38,31 +38,35 @@ const VideoCard = ({ videos }) => {
   };
 
   return (
-    <div className="flex flex-wrap flex-col m-1 w-80 h-80">
-      <div className="h-48 w-80 aspect-video">
-        <img
-          src={thumbnails?.maxres?.url || thumbnails?.high?.url}
-          alt="snippet.thumbnails.maxres"
-          className="h-full w-full p-2 rounded-lg "
-        />
-      </div>
-      <div className="flex w-full ">
-        <img alt="" className="h-9 w-20 rounded-full" />
-        <div className="flex flex-col w-full h-28 p-1">
-          <span className="text-md font-bold">
-            {truncateString(snippet.title)}
-          </span>
-          <span className="text-sm text-gray-300">{snippet.channelTitle}</span>
-          <span className="text-sm text-gray-300">
-            {statistics?.viewCount > 1000
-              ? (statistics?.viewCount / 1000).toFixed(1) + "k views"
-              : statistics?.viewCount + " views"}
-          </span>
-          <span className="text-sm text-gray-300">
-            {calculatePublishTime(snippet.publishedAt)}
-          </span>
+    <div className="flex flex-wrap flex-col m-1 w-80 h-80 .custom-scrollbar">
+      <Link to={"/watch?v=" + videos.id}>
+        <div className="h-48 w-80 aspect-video">
+          <img
+            src={thumbnails?.maxres?.url || thumbnails?.high?.url}
+            alt="snippet.thumbnails.maxres"
+            className="h-full w-full p-2 rounded-lg "
+          />
         </div>
-      </div>
+        <div className="flex w-full ">
+          <img alt="" className="h-9 w-20 rounded-full" />
+          <div className="flex flex-col w-full h-28 p-1">
+            <span className="text-md font-bold">
+              {truncateString(snippet.title)}
+            </span>
+            <span className="text-sm text-gray-300">
+              {snippet.channelTitle}
+            </span>
+            <span className="text-sm text-gray-300">
+              {statistics?.viewCount > 1000
+                ? (statistics?.viewCount / 1000).toFixed(1) + "k views"
+                : statistics?.viewCount + " views"}
+            </span>
+            <span className="text-sm text-gray-300">
+              {calculatePublishTime(snippet.publishedAt)}
+            </span>
+          </div>
+        </div>
+      </Link>
     </div>
   );
 };

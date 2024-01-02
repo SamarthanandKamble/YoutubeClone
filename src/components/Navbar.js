@@ -8,7 +8,7 @@ const Navbar = () => {
   const [searchText, setSearchText] = useState("");
 
   return (
-    <div className="fixed top-0 z-40 w-full border">
+    <div className="fixed top-0 z-40 w-full">
       <ul className="grid grid-cols-12 gap-1 bg-gray-950 text-white w-full py-2">
         <li
           className="p-1 flex items-center justify-center cursor-pointer col-span-1"

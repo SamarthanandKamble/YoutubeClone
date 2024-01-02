@@ -48,7 +48,7 @@ const SuggestionVideos = () => {
         {videos.map((video) => (
           <div
             key={video.id}
-            className="flex flex-wrap content-around items-center border m-1"
+            className="flex flex-wrap content-around items-center m-1"
           >
             <div className="w-44 h-24 my-2 mx-1">
               <Link to={"/watch?v=" + video.id}>
