@@ -1,26 +1,37 @@
 import React from "react";
 import { Search } from "react-feather";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import useSearchQueryVideos from "../Hooks/useSearchQueryVideos";
+import { addSearchText } from "../Redux/searchSuggestionSlice";
 const SearchSuggestions = () => {
-  const searchSuggestion = useSelector(
-    (state) => state.searchSuggestion?.searchSuggestion
+  const dispatch = useDispatch();
+  const searchSuggestionList = useSelector(
+    (state) => state.search?.searchSuggestion
   );
   const searchSuggestionDiv = useSelector(
-    (state) => state.searchSuggestion?.searchSuggestionDiv
+    (state) => state.search?.searchSuggestionDiv
   );
+  const searchText = useSelector((state) => state.search?.searchText);
+  useSearchQueryVideos(searchText);
 
-  if (searchSuggestion?.length <= 0) {
+  if (searchSuggestionList?.length <= 0 || searchSuggestionList === undefined) {
     return;
   }
-  console.log("loaded");
 
   return (
-    searchSuggestionDiv && (
-      <div className="absolute border text-white mx-auto w-6/12 top-1 transform translate-x-1/2 translate-y-1/4 -mt-3 bg-gray-800">
-        <ul className="py-1 ">
-          {searchSuggestion.map((item) => (
-            <li key={item} className="cursor-pointer hover:bg-gray-700">
-              <div className="flex items-center">
+    searchSuggestionDiv &&
+    searchSuggestionList[searchText]?.length > 0 && (
+      <div className="absolute border text-white mx-auto w-6/12 top-1 transform translate-x-1/2 translate-y-1/4 -mt-3 bg-gray-800 rounded-lg">
+        <ul className="py-1">
+          {searchSuggestionList[searchText].map((item) => (
+            <li 
+            key={item}
+            className="cursor-pointer hover:bg-gray-700"
+            onClick={(e)=>{console.log("value :",e.target.value)}} 
+             >
+              <div
+                className="flex items-center"
+              >
                 <span className="mx-2">
                   <Search size={22} color="gray" />
                 </span>

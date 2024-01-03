@@ -6,18 +6,30 @@ import { YOUTUBE_SEARCH_SUGGESTIONS_URL } from "../constants";
 import SearchSuggestions from "./SearchSuggestions";
 import {
   addSearchSuggestion,
+  addSearchText,
   closeSearchSuggestion,
   openSearchSuggestion,
 } from "../Redux/searchSuggestionSlice";
+import useSearchQueryVideos from "../Hooks/useSearchQueryVideos";
 
 const Navbar = () => {
   const dispatch = useDispatch();
- 
+  const searchSuggestionList = useSelector(
+    (state) => state.search?.searchSuggestion
+  );
+  const searchSuggestionDiv = useSelector(
+    (state) => state.search?.searchSuggestionDiv
+  );
   const [searchText, setSearchText] = useState("");
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      getTheSearchSuggestions();
+      if (searchSuggestionList[searchText]) {
+        console.log("present in cache :", searchSuggestionList[searchText]);
+      } else {
+        console.log("Need to fetch");
+        getTheSearchSuggestions();
+      }
     }, 200);
     return () => {
       clearTimeout(timer);
@@ -28,11 +40,14 @@ const Navbar = () => {
     try {
       const data = await fetch(YOUTUBE_SEARCH_SUGGESTIONS_URL + searchText);
       const result = await data.json();
-      console.log("result :", result[1]);
-      dispatch(addSearchSuggestion(result[1]));
+      dispatch(
+        addSearchSuggestion({
+          [searchText]: result[1],
+        })
+      );
     } catch (error) {
       console.warn(error?.message);
-    }
+    } 
   };
 
   return (
@@ -60,13 +75,14 @@ const Navbar = () => {
               placeholder="Search"
               className="px-5 py-1 w-full text-white border border-gray-700  rounded-l-full bg-gray-950 focus:outline-none "
               value={searchText}
-              onChange={(e) => setSearchText(e.target.value)}
+              onChange={(e) => {
+                setSearchText(e.target.value);
+                dispatch(addSearchText(e.target.value));
+              }}
               onFocus={() => {
-                console.log("Input focused");
                 dispatch(openSearchSuggestion());
               }}
               onBlur={() => {
-                console.log("Input blur");
                 dispatch(closeSearchSuggestion());
               }}
             />
@@ -89,9 +105,7 @@ const Navbar = () => {
           <User size={20} />
         </li>
       </ul>
-      <div>
-        <SearchSuggestions />
-      </div>
+      <div>{searchSuggestionDiv && <SearchSuggestions />}</div>
     </div>
   );
 };

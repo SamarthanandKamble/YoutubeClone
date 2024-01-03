@@ -10,6 +10,6 @@ export const store = configureStore({
     popularVideos: PopularVideosReducer,
     sideBarIcon: SideBarIconsReducer,
     watchVideo: WatchVideoReducer,
-    searchSuggestion: SearchSuggestionsReducer,
+    search: SearchSuggestionsReducer,
   },
 });
