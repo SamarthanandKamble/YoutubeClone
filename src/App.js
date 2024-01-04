@@ -5,14 +5,15 @@ import Navbar from "./components/Navbar";
 import VideoContainer from "./components/VideoContainer";
 import WatchPage from "./components/WatchPage";
 import ButtonContainer from "./components/ButtonContainer";
-import SearchSuggestions from "./components/SearchSuggestions";
+import SearchQueryPage from "./components/SearchQueryPage";
 
 function App() {
   return (
     <div className="bg-gray-950">
       <Navbar />
-      <SearchSuggestions />
-      <RouterProvider router={router}></RouterProvider>
+      <RouterProvider router={router}>
+        <Body />
+      </RouterProvider>
     </div>
   );
 }
@@ -26,7 +27,7 @@ const router = createBrowserRouter([
         path: "/",
         element: (
           <>
-            <ButtonContainer />
+            <ButtonContainer />,
             <VideoContainer />,
           </>
         ),
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
       {
         path: "watch",
         element: <WatchPage />,
+      },
+      {
+        path: "results",
+        element: <SearchQueryPage />,
       },
     ],
   },

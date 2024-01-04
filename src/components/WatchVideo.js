@@ -15,7 +15,13 @@ const WatchVideo = () => {
     setExpanded(!expanded);
   };
   useEffect(() => {
-    getVideoById();
+    if (!result) {
+      getVideoById();
+    }
+    window.scroll({
+      top: 0,
+      behavior: "smooth",
+    });
   }, [videoId]);
 
   const getVideoById = async () => {
@@ -43,7 +49,8 @@ const WatchVideo = () => {
           height="360"
           src={"https://www.youtube.com/embed/" + videoId}
           title="YouTube video player"
-          className="rounded-xl text-center aspect-video"
+          className="rounded-xl w-full text-center aspect-video"
+          allowFullScreen
         />
         <span className="font-bold my-2">{snippet.title}</span>
         <div className="flex flex-row justify-between py-2 w-full">

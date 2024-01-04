@@ -10,10 +10,14 @@ const usePopularVideos = () => {
       getThePopularVideos();
     }
   }, []);
+
   const getThePopularVideos = async () => {
-    const data = await fetch(POPULAR_VIDEOS_URL);
-    const { items } = await data.json();
-    dispatch(addPopularVideos(items));
+    try {
+      console.warn("N/W call POPULAR_VIDEOS");
+      const data = await fetch(POPULAR_VIDEOS_URL);
+      const { items } = await data.json();
+      dispatch(addPopularVideos(items));
+    } catch (error) {}
   };
 };
 

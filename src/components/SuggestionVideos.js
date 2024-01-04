@@ -58,7 +58,7 @@ const SuggestionVideos = () => {
                     video?.snippet?.thumbnails?.maxres?.url ||
                     video?.snippet?.thumbnails?.high?.url
                   }
-                  className="aspect-video  rounded-xl w-full h-full"
+                  className="aspect-video rounded-xl w-full h-full"
                 />
               </Link>
             </div>

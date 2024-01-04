@@ -3,16 +3,23 @@ import { createSlice } from "@reduxjs/toolkit";
 export const SearchSuggestionsSlice = createSlice({
   name: "search",
   initialState: {
-    searchSuggestion: {},
+    searchSuggestionCache: {},
     searchSuggestionDiv: false,
-    searchText: "",
+    searchItems: "",
+    searchQuery: "",
   },
   reducers: {
     addSearchSuggestion: (state, action) => {
-      state.searchSuggestion = { ...state.searchSuggestion, ...action.payload };
+      state.searchSuggestionCache = {
+        ...state.searchSuggestionCache,
+        ...action.payload,
+      };
     },
-    addSearchText: (state, action) => {
-      state.searchText = action.payload;
+    addSearchQuery: (state, action) => {
+      state.searchQuery = action.payload;
+    },
+    addSearchItems: (state, action) => {
+      state.searchItems = action.payload;
     },
     closeSearchSuggestion: (state) => {
       state.searchSuggestionDiv = false;
@@ -27,7 +34,8 @@ export const {
   addSearchSuggestion,
   closeSearchSuggestion,
   openSearchSuggestion,
-  addSearchText,
+  addSearchQuery,
+  addSearchItems,
 } = SearchSuggestionsSlice.actions;
 
 export default SearchSuggestionsSlice.reducer;
