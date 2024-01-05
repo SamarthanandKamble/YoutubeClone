@@ -14,7 +14,7 @@ const VideoContainer = () => {
   }, []);
 
   return (
-    <div className="flex flex-wrap justify-between content-center items-center bg-gray-950 absolute left-24 top-11 px-2 mt-14">
+    <div className="flex flex-wrap justify-between content-center items-center bg-gray-950 absolute top-11 px-2 md:left-16 md:mt-16 lg:mt-14 left-0 mt-16 w-auto">
       {popularVideos.map((videos) => (
           <VideoCard videos={videos} key={videos.id} />
       ))}

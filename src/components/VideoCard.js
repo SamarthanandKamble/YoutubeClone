@@ -38,17 +38,21 @@ const VideoCard = ({ videos }) => {
   };
 
   return (
-    <div className="flex flex-wrap flex-col m-1 w-80 h-80 .custom-scrollbar">
+    <div className="flex flex-wrap flex-col m-1 sm:w-80 h-80 .custom-scrollbar w-full">
       <Link to={"/watch?v=" + videos.id}>
-        <div className="h-48 w-80 aspect-video">
+        <div className="h-48 ">
           <img
             src={thumbnails?.maxres?.url || thumbnails?.high?.url}
-            alt="snippet.thumbnails.maxres"
-            className="h-full w-full p-2 rounded-lg "
+            alt="snippet thumbnails"
+            className="h-full w-full aspect-video rounded-lg "
           />
         </div>
-        <div className="flex w-full ">
-          <img alt="" className="h-9 w-20 rounded-full" />
+        <div className="flex my-2 w-full">
+          <img
+            src={thumbnails?.maxres?.url || thumbnails?.high?.url}
+            alt="channel-thumbnail"
+            className="h-9 w-10  rounded-full "
+          />
           <div className="flex flex-col w-full h-28 p-1">
             <span className="text-md font-bold">
               {truncateString(snippet.title)}

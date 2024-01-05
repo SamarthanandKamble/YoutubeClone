@@ -14,9 +14,7 @@ export const BUTTON_CONTAINER_LIST = [
   { selected: false, value: "Sales" },
   { selected: false, value: "Thoughts" },
   { selected: false, value: "Gadgets" },
-  { selected: false, value: "Recently uploaded" },
   { selected: false, value: "Watched" },
-  { selected: false, value: "New to you" },
 ];
 
 export const YOUTUBE_SEARCH_SUGGESTIONS_URL =

@@ -10,16 +10,13 @@ import { menuToggler } from "../Redux/menuSlice";
 import { YOUTUBE_SEARCH_SUGGESTIONS_URL } from "../constants";
 import {
   addSearchItems,
-  addSearchQuery,
   addSearchSuggestion,
-  closeSearchSuggestion,
   openSearchSuggestion,
 } from "../Redux/searchSuggestionSlice";
-import { Link, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const dispatch = useDispatch();
-  const { transcript, resetTranscript } = useSpeechRecognition();
+  const { transcript } = useSpeechRecognition();
   const [listening, setListening] = useState(false);
   const searchSuggestionList = useSelector(
     (state) => state.search?.searchSuggestionCache
@@ -60,27 +57,28 @@ const Navbar = () => {
   };
 
   return (
-    <div className="fixed top-0 z-40 w-full">
+    <div className="fixed top-0 z-40 w-full ">
       <ul className="grid grid-cols-12 gap-1 bg-gray-950 text-white w-full py-2">
-        <li className="p-1 flex items-center justify-center -ml-6 cursor-pointer col-span-1">
+        <li className="p-1 flex items-center justify-center  cursor-pointer col-span-2 md:col-span-1 sm:col-span-1">
           <Menu
             onClick={(e) => dispatch(menuToggler())}
             color="gray"
-            size={28}
           />
         </li>
-        <li className="p-1 col-span-2">
-          <div className="flex items-center relative">
+        <li className="p-1 hidden sm:block md:col-span-2 sm-col-span-2">
+          <div className="flex items-center relative ">
             <span>
               <FontAwesomeIcon icon={faYoutube} size="2xl" />
             </span>
-            <span className="font-bold mx-1">Premium</span>
-            <span className="absolute text-xs top-0 left-24 text-gray-400">
+            <span className="font-bold mx-1 hidden sm:block md:block lg:block xl:block 2xl:block">
+              Premium
+            </span>
+            <span className="absolute text-xs top-0 left-24 text-gray-400  hidden sm:block md:block lg:block xl:block 2xl:block">
               IN
             </span>
           </div>
         </li>
-        <li className="p-1 col-span-6">
+        <li className="p-1 md:col-span-6 col-span-10">
           <div className="flex w-full items-center ">
             <input
               type="text"
@@ -101,20 +99,20 @@ const Navbar = () => {
 
             <span
               onClick={startListening}
-              className="mx-4 p-1 border w-30 bg-gray-700 rounded-full cursor-pointer"
+              className={`mx-4 p-1 border w-30 bg-gray-700 rounded-full cursor-pointer hidden sm:block md:col-span-1`}
             >
               <Mic size={20} />
             </span>
           </div>
         </li>
 
-        <li className="p-1 flex items-center justify-end w-25 col-span-1">
+        <li className="p-1 items-center justify-end w-25 col-span-1 hidden sm:flex sm:col-span-1 md:col-span-1 border  ">
           <Video size={20} />
         </li>
-        <li className="p-1 flex items-center justify-center w-25 col-span-1">
+        <li className="p-1 items-center justify-center w-25 hidden sm:flex md:col-span-1 ">
           <Bell size={20} />
         </li>
-        <li className="p-1 flex items-center w-25 col-span-1">
+        <li className="p-1 items-center w-25 hidden sm:flex sm:col-span-1 md:col-span-1">
           <User size={20} />
         </li>
       </ul>

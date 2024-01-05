@@ -1,5 +1,5 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { Home, Film, Users, PlayCircle, Download, Save } from "react-feather";
 import { Link } from "react-router-dom";
 const SideBarIcons = () => {
@@ -8,7 +8,7 @@ const SideBarIcons = () => {
   );
   return (
     shouldOpenSideBarIcons && (
-      <div className="w-24 bg-gray-950 text-white mt-2 min-h-full fixed left-0 top-12">
+      <div className="w-24 bg-gray-950 text-white mt-2 min-h-full fixed left-0 top-12 md:w-16 sm:block hidden">
         <ul className="p-1 items-center content-center">
           <Link to={"/"}>
             <li>
@@ -33,7 +33,7 @@ const SideBarIcons = () => {
               <span className="items-center">
                 <Users color="gray" size={24} />
               </span>
-              <span className="text-xs text-center">Subscriptions</span>
+              <span className="text-xs text-center">Sub scriptions</span>
             </div>
           </li>
           <li>
