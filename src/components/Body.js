@@ -4,7 +4,6 @@ import { useSelector } from "react-redux";
 import SideBarIcons from "./SideBarIcons";
 import usePopularVideos from "../Hooks/usePopularVideos";
 import { Outlet } from "react-router-dom";
-import SearchSuggestionSlice from "../Redux/searchSuggestionSlice";
 import SearchSuggestions from "./SearchSuggestions";
 const Body = () => {
   usePopularVideos();

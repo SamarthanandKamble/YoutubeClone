@@ -16,9 +16,9 @@ const ButtonContainer = ({ length }) => {
       className={` h-14 bg-gray-950 my-6  ${
         param[0].size
           ? "relative top-10 p-1 "
-          : "fixed top-8 md:left-20 z-10 py-1 pr-3"
+          : "fixed top-8 md:left-16 z-10 py-1 pr-3 w-full"
       }
-       md:w-full w-full `}
+       md:w-full w-full`}
     >
       <ul className="flex w-full overflow-x-auto">
         {btnArray.map((item, index) => {

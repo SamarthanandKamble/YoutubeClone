@@ -106,7 +106,7 @@ const Navbar = () => {
           </div>
         </li>
 
-        <li className="p-1 items-center justify-end w-25 col-span-1 hidden sm:flex sm:col-span-1 md:col-span-1 border  ">
+        <li className="p-1 items-center justify-end w-25 col-span-1 hidden sm:flex sm:col-span-1 md:col-span-1">
           <Video size={20} />
         </li>
         <li className="p-1 items-center justify-center w-25 hidden sm:flex md:col-span-1 ">

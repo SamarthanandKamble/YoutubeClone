@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const VideoCard = ({ videos }) => {
   const { snippet, statistics } = videos;
   const { thumbnails } = snippet;
-  // console.log("videos", videos);
+
   const truncateString = (str) => {
     let words = str.split(" ");
     if (words.length < 10) {
@@ -38,9 +38,9 @@ const VideoCard = ({ videos }) => {
   };
 
   return (
-    <div className="flex flex-wrap flex-col m-1 sm:w-80 h-80 .custom-scrollbar w-full">
+    <div className="flex flex-wrap flex-col m-1 sm:w-80 sm:h-80 .custom-scrollbar w-screen">
       <Link to={"/watch?v=" + videos.id}>
-        <div className="h-48 ">
+        <div className="h-48">
           <img
             src={thumbnails?.maxres?.url || thumbnails?.high?.url}
             alt="snippet thumbnails"
@@ -51,7 +51,7 @@ const VideoCard = ({ videos }) => {
           <img
             src={thumbnails?.maxres?.url || thumbnails?.high?.url}
             alt="channel-thumbnail"
-            className="h-9 w-10  rounded-full "
+            className="h-9 w-9 rounded-full "
           />
           <div className="flex flex-col w-full h-28 p-1">
             <span className="text-md font-bold">
