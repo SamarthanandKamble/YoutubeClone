@@ -978,7 +978,7 @@ const SearchQueryPage = () => {
       {searchQueryVideos &&
         searchQueryVideos.map((video, index) => (
           <Link to={"/watch?v=" + video.id.videoId} key={index}>
-            <div className="flex flex-col w-full h-auto text-white sm:flex-row mx-1 my-2 shadow-lg">
+            <div className="flex flex-col w-full h-auto text-white sm:flex-row my-2">
               <div className="w-full h-full sm:w-96 sm:h-52">
                 <img
                   src={video.snippet?.thumbnails?.high?.url}
@@ -986,7 +986,7 @@ const SearchQueryPage = () => {
                   className="aspect-video "
                 />
               </div>
-              <div className="flex w-full items-start content-evenly ">
+              <div className="flex w-full items-start content-evenly">
                 <div className="flex flex-col w-full sm:h-28 p-1">
                   <span className="text-md font-bold mt-4">
                     {truncateString(video.snippet.title)}

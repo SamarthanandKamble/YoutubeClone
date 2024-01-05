@@ -18,4 +18,4 @@ export const BUTTON_CONTAINER_LIST = [
 ];
 
 export const YOUTUBE_SEARCH_SUGGESTIONS_URL =
-  "http://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=";
+  "https://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=";
