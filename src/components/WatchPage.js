@@ -8,13 +8,13 @@ const WatchPage = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(closeSidebar());
-    window.scrollTo({
-      behavior: "smooth",
-      top: 0,
-    });
+    // window.scrollTo({
+    //   behavior: "smooth",
+    //   top: 0,
+    // });
   }, []);
   return (
-    <div className="bg-gray-950 absolute px-2 w-full flex">
+    <div className="bg-gray-950 absolute px-2 w-full flex flex-col sm:flex-row flex-wrap">
       <WatchVideo />
       <SuggestionVideos />
     </div>

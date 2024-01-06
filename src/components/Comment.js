@@ -2,18 +2,16 @@ import React from "react";
 
 const Comment = ({ snippet }) => {
   return (
-    <div>
-      <div className={`flex w-auto flex-nowrap text-wrap`}>
+    <div className="border  ">
+      <div className={`flex `}>
         <img
           alt="author-thumbnail"
           className="w-10 h-10 rounded-full"
           src={snippet?.authorProfileImageUrl}
         />
-        <div className="flex flex-col ml-2 flex-wrap text-wrap">
+        <div className="flex flex-col ml-2 flex-wrap">
           <span>{snippet?.authorDisplayName}</span>
-          <span className="">
-            {snippet?.textDisplay || snippet?.textOriginal}
-          </span>
+          <span className="">{snippet?.textDisplay || snippet?.textOriginal}</span>
         </div>
       </div>
     </div>

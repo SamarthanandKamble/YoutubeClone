@@ -9,12 +9,11 @@ const CommentsList = ({ items }) => {
     <div className="w-full p-2">
       {items &&
         items.map((item, index) => (
-          <div key={index} className="m-2">
+          <div key={index} className="m-2 w-full">
             <Comment
               snippet={item?.snippet?.topLevelComment?.snippet || item?.snippet}
-
             />
-            <div className="ml-8 w-90 overflow-auto h-auto">
+            <div className="ml-8 w-full overflow-auto h-auto">
               <CommentsList
                 items={item?.replies?.comments}
               />

@@ -39,18 +39,18 @@ const SuggestionVideos = () => {
 
   const videos = useSelector((state) => state.popularVideos?.videos);
   return (
-    <div className="w-4/12 ">
-      <div>
+    <div className="sm:w-4/12 w-full">
+      <div className="">
         <ButtonContainer length={5} />
       </div>
 
-      <div className="mt-10">
+      <div className="mt-10 w-full border">
         {videos.map((video) => (
           <div
             key={video.id}
-            className="flex flex-wrap content-around items-center m-1"
+            className="flex flex-wrap content-around items-center m-1 w-full border"
           >
-            <div className="w-44 h-24 my-2 mx-1">
+            <div className="w-9/12 mx-auto sm:w-44 h-24 my-2 sm:mx-1">
               <Link to={"/watch?v=" + video.id}>
                 <img
                   alt="video-thumbnail"
@@ -62,7 +62,7 @@ const SuggestionVideos = () => {
                 />
               </Link>
             </div>
-            <div className=" w-52 h-24 ml-1 flex flex-col">
+            <div className="w-full sm:w-52 h-24 sm:ml-1 flex flex-col sm:items-start items-center">
               <Link to={"/watch?v=" + video.id}>
                 <section className="text-sm font-semibold">
                   {truncateString(video?.snippet?.title)}
@@ -70,7 +70,7 @@ const SuggestionVideos = () => {
                 <section className="text-xs text-gray-200 mt-1 mb-1 font-semibold">
                   {video.snippet.channelTitle}
                 </section>
-                <section className="text-xs  flex flex-wrap items-center  content-center mt-1">
+                <section className="text-xs flex flex-wrap items-center content-center mt-1">
                   <span className="mr-2">
                     {video?.statistics?.viewCount > 1000
                       ? (video?.statistics?.viewCount / 1000).toFixed(1) +

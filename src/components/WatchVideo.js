@@ -16,10 +16,10 @@ const WatchVideo = () => {
     if (!result) {
       getVideoById();
     }
-    window.scroll({
-      top: 0,
-      behavior: "smooth",
-    });
+    // window.scroll({
+    //   top: 0,
+    //   behavior: "smooth",
+    // });
   }, [videoId]);
 
   const getVideoById = async () => {
@@ -40,8 +40,8 @@ const WatchVideo = () => {
 
   const { snippet, statistics } = result;
   return (
-    <div className="w-8/12 min-h-screen mt-16">
-      <section className="flex flex-col w-3/4 mx-auto aspect-video">
+    <div className="w-full sm:w-8/12 min-h-screen mt-16">
+      <section className="flex flex-col w-full sm:w-3/4 mx-auto aspect-video">
         <iframe
           width="640"
           height="360"
@@ -51,7 +51,7 @@ const WatchVideo = () => {
           allowFullScreen
         />
         <span className="font-bold my-2">{snippet.title}</span>
-        <div className="flex flex-row justify-between py-2 w-full">
+        <div className="flex flex-col sm:flex-row justify-between py-2 w-full">
           <div className="flex items-center">
             <img
               src={snippet.thumbnails.default.url}
@@ -120,7 +120,7 @@ const WatchVideo = () => {
         </span>
       </section>
 
-      <section className="w-10/12 mx-auto">
+      <section className="w-10/12 mx-auto border">
         <CommentThreads videoId={videoId} />
       </section>
     </div>
