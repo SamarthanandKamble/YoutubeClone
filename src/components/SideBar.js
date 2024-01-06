@@ -11,11 +11,10 @@ import {
   Download,
   ChevronDown,
 } from "react-feather";
-import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 const SideBar = () => {
   return (
-    <div className="w-60 bg-black p-1 h-screen z-40 fixed top-14">
+    <div className="w-60 bg-gray-950 p-1 h-screen z-40 fixed top-14 transition-all">
       <ul>
         <li>
           <Link to={"/"}>
