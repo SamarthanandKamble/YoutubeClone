@@ -4,6 +4,7 @@ import { useSearchParams } from "react-router-dom";
 import { WATCH_VIDEO_ID_URL } from "../constants";
 import { useDispatch, useSelector } from "react-redux";
 import { addWatchVideo } from "../Redux/watchVideoSlice";
+import CommentThreads from "./CommentThreads";
 const WatchVideo = () => {
   const dispatch = useDispatch();
   const result = useSelector((state) => state.watchVideo?.watchVideo);
@@ -11,9 +12,6 @@ const WatchVideo = () => {
   const [searchParam] = useSearchParams();
   const videoId = searchParam.get("v");
 
-  const descriptionToggle = () => {
-    setExpanded(!expanded);
-  };
   useEffect(() => {
     if (!result) {
       getVideoById();
@@ -116,10 +114,14 @@ const WatchVideo = () => {
         <span className="min-w-full">{snippet?.localized?.description}</span>
         <span
           className="text-blue-500 cursor-pointer absolute bottom-0 right-2  bg-gradient-to-r from-gray-800 p-1"
-          onClick={descriptionToggle}
+          onClick={() => setExpanded(!expanded)}
         >
           {expanded ? "Show less" : "...more"}
         </span>
+      </section>
+
+      <section className="w-10/12 mx-auto">
+        <CommentThreads videoId={videoId} />
       </section>
     </div>
   );

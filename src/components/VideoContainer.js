@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import VideoCard from "./VideoCard";
-import { Link } from "react-router-dom";
 import {} from "react-redux";
 import { openSidebar } from "../Redux/sideBarIconSlice";
 

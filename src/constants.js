@@ -19,3 +19,6 @@ export const BUTTON_CONTAINER_LIST = [
 
 export const YOUTUBE_SEARCH_SUGGESTIONS_URL =
   "https://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=";
+
+export const YOUTUBE_VIDEO_COMMENTS_THREAD_URL =
+  "https://youtube.googleapis.com/youtube/v3/commentThreads?part=snippet%2Creplies&videoId=";
