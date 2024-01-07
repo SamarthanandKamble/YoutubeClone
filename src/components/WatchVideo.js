@@ -13,13 +13,12 @@ const WatchVideo = () => {
   const videoId = searchParam.get("v");
 
   useEffect(() => {
-    if (!result) {
-      getVideoById();
-    }
-    // window.scroll({
-    //   top: 0,
-    //   behavior: "smooth",
-    // });
+    getVideoById();
+
+    window.scroll({
+      top: 0,
+      behavior: "smooth",
+    });
   }, [videoId]);
 
   const getVideoById = async () => {
