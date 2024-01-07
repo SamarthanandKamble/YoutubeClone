@@ -17,6 +17,7 @@ const CommentThreads = ({ videoId }) => {
           process.env.REACT_APP_YOUTUBE_API_KEY
       );
       const { items } = await data.json();
+      console.log("result :",items);
       setComments(items);
     } catch (error) {
       console.warn(error?.message);
@@ -24,9 +25,9 @@ const CommentThreads = ({ videoId }) => {
   };
 
   return (
-    <div className="">
-      {comments.length > 0 ? (
-        <div className="mx-auto">
+    <div className="border sm:w-full w-[95%]">
+      {comments?.length > 0 ? (
+        <div className="mx-auto sm:w-full border w-[100%]">
           <h1 className="font-semibold mt-6 text-xl">{comments.length} Comments</h1>
           <CommentsList items={comments}  />
         </div>

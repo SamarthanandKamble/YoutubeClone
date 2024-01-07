@@ -95,8 +95,8 @@ const WatchVideo = () => {
       </section>
 
       <section
-        className={`w-3/4 mx-auto flex flex-wrap bg-gray-800 rounded-lg p-2 my-2 h-28 relative overflow-${
-          expanded ? "visible h-auto w-3/4" : "hidden"
+        className={`w-3/4 mx-auto flex flex-wrap bg-gray-800 rounded-lg p-2 my-2 h-28 relative text-sm ${
+          expanded ? "visible h-auto w-3/4" : "overflow-hidden"
         }`}
       >
         <div>
@@ -120,7 +120,7 @@ const WatchVideo = () => {
         </span>
       </section>
 
-      <section className="w-10/12 mx-auto border">
+      <section className="mx-auto border w-full sm:w-11/12">
         <CommentThreads videoId={videoId} />
       </section>
     </div>

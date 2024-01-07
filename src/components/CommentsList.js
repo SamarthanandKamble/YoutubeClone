@@ -6,18 +6,18 @@ const CommentsList = ({ items }) => {
     return;
   }
   return (
-    <div className="w-full p-2">
+    <div className="sm:w-full border p-2">
       {items &&
         items.map((item, index) => (
-          <div key={index} className="m-2 w-full">
+          <div key={index} className="mt-2">
             <Comment
               snippet={item?.snippet?.topLevelComment?.snippet || item?.snippet}
             />
-            <div className="ml-8 w-full overflow-auto h-auto">
-              <CommentsList
-                items={item?.replies?.comments}
-              />
-            </div>
+            {item?.snippet?.totalReplyCount > 0 && (
+              <div className="ml-8 overflow-auto h-auto">
+                <CommentsList items={item?.replies?.comments} />
+              </div>
+            )}
           </div>
         ))}
     </div>
