@@ -14,7 +14,6 @@ const WatchVideo = () => {
 
   useEffect(() => {
     getVideoById();
-
     window.scroll({
       top: 0,
       behavior: "smooth",
@@ -119,7 +118,7 @@ const WatchVideo = () => {
         </span>
       </section>
 
-      <section className="mx-auto border w-full sm:w-11/12">
+      <section className="mx-auto w-full sm:w-11/12">
         <CommentThreads videoId={videoId} />
       </section>
     </div>

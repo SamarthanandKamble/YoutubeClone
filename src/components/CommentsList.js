@@ -6,7 +6,7 @@ const CommentsList = ({ items }) => {
     return;
   }
   return (
-    <div className="sm:w-full border p-2">
+    <div className="sm:w-full p-2">
       {items &&
         items.map((item, index) => (
           <div key={index} className="mt-2">

@@ -44,11 +44,11 @@ const SuggestionVideos = () => {
         <ButtonContainer length={5} />
       </div>
 
-      <div className="mt-10 w-full border">
+      <div className="mt-10 w-full">
         {videos.map((video) => (
           <div
             key={video.id}
-            className="flex flex-wrap content-around items-center m-1 w-full border"
+            className="flex flex-wrap content-around items-center m-1 w-full"
           >
             <div className="w-9/12 mx-auto sm:w-44 h-24 my-2 sm:mx-1">
               <Link to={"/watch?v=" + video.id}>
