@@ -30,7 +30,7 @@ const VideoCard = ({ videos }) => {
     } else if (hours < 24) {
       return hours + " hours ago";
     } else if (days < 7) {
-      return days + " days ago";
+      return days + `${days < 2 ? " day ago" : " days ago"} `;
     } else {
       const weeks = Math.floor(days / 7);
       return weeks + " weeks ago";
