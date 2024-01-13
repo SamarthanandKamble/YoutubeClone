@@ -5,7 +5,9 @@ import Navbar from "./components/Navbar";
 import VideoContainer from "./components/VideoContainer";
 import WatchPage from "./components/WatchPage";
 import ButtonContainer from "./components/ButtonContainer";
-import SearchQueryPage from "./components/SearchQueryPage";
+import { Suspense, lazy } from "react";
+
+const SearchQueryPage = lazy(() => import("./components/SearchQueryPage"));
 
 function App() {
   return (
@@ -38,7 +40,13 @@ const router = createBrowserRouter([
       },
       {
         path: "results",
-        element: <SearchQueryPage />,
+        element: (
+          <Suspense
+            fallback={<h1 className="text-center text-black">Loading ...</h1>}
+          >
+            <SearchQueryPage />
+          </Suspense>
+        ),
       },
     ],
   },
