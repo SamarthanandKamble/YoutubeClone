@@ -5,11 +5,11 @@ const VideoCard = ({ videos }) => {
   const { thumbnails } = snippet;
 
   const truncateString = (str) => {
-    let words = str.split(" ");
-    if (words.length < 10) {
-      return words.slice(0, words.length - 1).join(" ");
+    const MAX_LENGTH = 25;
+    if (str.length <= MAX_LENGTH) {
+      return str;
     } else {
-      return words.slice(0, words.length / 4).join(" ") + " ...";
+      return str.substring(0, MAX_LENGTH) + " ...";
     }
   };
 

@@ -33,14 +33,14 @@ const SearchQueryPage = () => {
     return;
   }
 
-  const truncateString = (str) => {
-    let words = str.split(" ");
-    if (words.length <= 10) {
-      return str;
-    } else {
-      return words.slice(0, words.length).join(" ") + " ...";
-    }
-  };
+   const truncateString = (str) => {
+     const MAX_LENGTH = 75;
+     if (str.length <= MAX_LENGTH) {
+       return str;
+     } else {
+       return str.substring(0, MAX_LENGTH) + " ...";
+     }
+   };
 
   const calculatePublishTime = (dateStr) => {
     let currentDate = new Date();
