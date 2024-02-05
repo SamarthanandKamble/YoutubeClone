@@ -14,6 +14,8 @@ import {
   openSearchSuggestion,
 } from "../Redux/searchSuggestionSlice";
 
+import jsonp from "jsonp";
+
 const Navbar = () => {
   const dispatch = useDispatch();
   const { transcript } = useSpeechRecognition();
@@ -38,12 +40,20 @@ const Navbar = () => {
 
   const getTheSearchSuggestions = async () => {
     try {
-      const data = await fetch(YOUTUBE_SEARCH_SUGGESTIONS_URL + searchText);
-      const result = await data.json();
-      dispatch(addSearchSuggestion({ [searchText]: result[1] }));
-      dispatch(addSearchItems(searchText));
+      jsonp(
+        `${YOUTUBE_SEARCH_SUGGESTIONS_URL + searchText}`,
+        null,
+        (error, data) => {
+          if (error) {
+            console.error("ERROR here", error);
+          } else {
+            dispatch(addSearchSuggestion({ [searchText]: data[1] }));
+            dispatch(addSearchItems(searchText));
+          }
+        }
+      );
     } catch (error) {
-      console.error(error?.message);
+      console.warn(error?.message);
     }
   };
   const startListening = () => {
@@ -60,10 +70,7 @@ const Navbar = () => {
     <div className="fixed top-0 z-40 w-full ">
       <ul className="grid grid-cols-12 gap-1 bg-gray-950 text-white w-full py-2">
         <li className="p-1 flex items-center justify-center  cursor-pointer col-span-2 md:col-span-1 sm:col-span-1">
-          <Menu
-            onClick={(e) => dispatch(menuToggler())}
-            color="gray"
-          />
+          <Menu onClick={(e) => dispatch(menuToggler())} color="gray" />
         </li>
         <li className="p-1 hidden sm:block md:col-span-2 sm-col-span-2">
           <div className="flex items-center relative ">
